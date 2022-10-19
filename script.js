@@ -12,7 +12,7 @@ let oddObjectsArray = []
 let objectArray = [object0, object1, object2, object3]
 //idk why below line is not working
 // let doc = document.getElementById("main")
-let doc = ""
+let doc = document.getElementById("main")
 let increasingNumber = 0
 // will take the array of objects and makes an objectArrayEven and ObjectArrayOdd based on objects name
 //----will add each object's age to webpage after 1 second, four seconds total for four objects
@@ -29,30 +29,27 @@ let oddEvenSorter = (objArray) => {
 	}
 }
 //will update webpage every one second to show the next object, should be sequential
-//----i believe this should work as is but my doc is fuckzorzing it up on line 15ish
 let evenOddDelay = () => {
 	if (increasingNumber % 2 === 0) {
-		setTimeout(() => {
+		let evenOutput = ""
+		for (let object of objectArray) {
+			evenOutput = `<li>${object.name}</li>`
 			increasingNumber++
-			for (let object of objectArray) {
-				let doc = doc + evenObjectArray[object]
-			}
-		}, 1000)
+		}
+		doc.innerHTML = doc.innerHTML + evenOutput
 	} else {
-		setTimeout(() => {
+		let oddOutput = ""
+		for (let object of objectArray) {
+			oddOutput = `<li>${object.name}</li>`
 			increasingNumber++
-			for (let object of objectArray) {
-				let doc = doc + evenObjectArray[object]
-			}
-		})
+		}
+		doc.innerHTML = doc.innerHTML + oddOutput
 	}
 }
 
 let randomNumber = (maxNum) => {
 	return Math.floor(Math.random() * maxNum)
 }
-
-console.log(randomNumber(3))
 
 //will use await/async to change the color of the html document by randomly selecting object from object array
 //----if object.name begins with the letter 'f', the document will change to blue, if a different color it will turn orange
