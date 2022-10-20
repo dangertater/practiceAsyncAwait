@@ -8,7 +8,7 @@ let object3 = {
 	skills: "four horseman are ready to plague",
 }
 let evenObjectArray = []
-let oddObjectsArray = []
+let oddObjectArray = []
 let objectArray = [object0, object1, object2, object3]
 //idk why below line is not working
 // let doc = document.getElementById("main")
@@ -19,37 +19,43 @@ let increasingNumber = 0
 
 //step one, sorts into odd and even arrays based on the objects age value
 let oddEvenSorter = (objArray) => {
-	for (let obj of objArray) {
+	for (let i = 0; i < objArray.length; i++) {
+		let obj = objArray[i]
 		if (obj.age % 2 === 0) {
 			evenObjectArray.push(obj)
 		} else {
-			oddObjectsArray.push(obj)
+			oddObjectArray.push(obj)
 		}
-		evenOddDelay()
+		setTimeout(evenOddDelay, i * 1000)
 	}
 }
 //will update webpage every one second to show the next object, should be sequential
 let evenOddDelay = () => {
 	if (increasingNumber % 2 === 0) {
 		let evenOutput = ""
-		for (let object of objectArray) {
-			evenOutput = `<li>${object.name}</li>`
-			increasingNumber++
+		let doItEven = () => {
+			doc.innerHTML = doc.innerHTML + evenOutput
 		}
-		doc.innerHTML = doc.innerHTML + evenOutput
+		let object = evenObjectArray[increasingNumber]
+		evenOutput = `<li>${object.age}</li>`
+
+		doItEven()
 	} else {
 		let oddOutput = ""
-		for (let object of objectArray) {
-			oddOutput = `<li>${object.name}</li>`
-			increasingNumber++
+		let doItOdd = () => {
+			doc.innerHTML = doc.innerHTML + oddOutput
 		}
-		doc.innerHTML = doc.innerHTML + oddOutput
+		let object = oddObjectArray[increasingNumber]
+		oddOutput = `<li>${object.age}</li>`
+		doItOdd()
 	}
+	increasingNumber++
 }
-
 let randomNumber = (maxNum) => {
 	return Math.floor(Math.random() * maxNum)
 }
+
+// setTimeout(() => {}, 1000)
 
 //will use await/async to change the color of the html document by randomly selecting object from object array
 //----if object.name begins with the letter 'f', the document will change to blue, if a different color it will turn orange
@@ -58,4 +64,4 @@ let backgroundColorChanger = () => {}
 oddEvenSorter(objectArray)
 
 console.log("evenObjectArray =", JSON.stringify(evenObjectArray))
-console.log("oddObjectsArray =", JSON.stringify(oddObjectsArray))
+console.log("oddObjectArray =", JSON.stringify(oddObjectArray))
