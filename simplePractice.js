@@ -1,3 +1,4 @@
+//q4e - is there a better way to make the pause/play button?
 let body = document.getElementsByTagName("body")
 let stylesFromCSS = getComputedStyle(body[0])
 let randomNum = Math.floor(Math.random() * 3)
@@ -5,6 +6,8 @@ let buttonStop = document.getElementById("buttonStop")
 let backgroundChanging = true
 
 //pause/play button for the background color
+//q4e - the second argument being e I don't actually know whats happening
+//----I just added it because thats what we did before
 buttonStop.addEventListener("click", (e) => {
 	if (backgroundChanging === true) {
 		backgroundChanging = false
@@ -32,7 +35,6 @@ let changeBackgroundToBlue = () => {
 		}
 	}, 750)
 }
-
 let changeBackgroundToGreen = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "green"
@@ -42,7 +44,6 @@ let changeBackgroundToGreen = () => {
 		}
 	}, 750)
 }
-
 let randomColorSelector = () => {
 	randomNum = Math.floor(Math.random() * 3)
 	if (randomNum === 0) {
@@ -54,7 +55,7 @@ let randomColorSelector = () => {
 	}
 }
 
-let fontColorYellow = (e) => {
+let fontColorYellow = () => {
 	body[0].style.color = "yellow"
 	console.log(e)
 }
@@ -64,6 +65,7 @@ let fontColorHotpink = () => {
 }
 
 randomColorSelector()
+//attempt one at a promise below
 
 //below is the goal for promise reject after I failed miserably and deleted all my code
 //----goal of promise is for the promise to resolve if font is yellow, and reject if not
@@ -71,3 +73,5 @@ randomColorSelector()
 //--------promise will also be called frequently. first loop through it resolves
 //--------.then (line 52) call fontColorHotpink(), next cycle through randomColorSelector it
 //--------is hotpink, and the computer is just like naaaaaah it's yellow now
+
+//att
