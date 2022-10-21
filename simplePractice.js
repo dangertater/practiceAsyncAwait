@@ -1,4 +1,3 @@
-//q4e - is there a better way to make the pause/play button?
 let body = document.getElementsByTagName("body")
 let stylesFromCSS = getComputedStyle(body[0])
 let randomNum = Math.floor(Math.random() * 3)
@@ -66,27 +65,28 @@ let fontColorHotpink = () => {
 }
 
 randomColorSelector()
-
-let executorTest = () => {
-	let testNum = 1
-	setTimeout(() => {
-		if (testNum === 1) {
-			return true
-		} else {
-			return false
-		}
-	}, 5000)
+//
+// write a function that takes ms number, returns a promise, and resolve the promise after ms time.
+let testFunc = (ms) => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve()
+		}, ms)
+	})
 }
 
 //promise practice, function changes buttonStop's color if background changes to green
+//----q4e in this scenario, when pauseButtonBackgroundChange is called, we would use 'testFunc' and a promise if the
+//----pauseButtonBackgroundChange's code was only to be ran if it met the 'resolve' properties of testFunc
+//--------aka if pauseButtonBackgroundChange is contingent on x, and x takes time to figure out,
+//--------have testFunc test for x, resolve if its good, and then tell pauseButtonBackgroundChange to continue with it's code
 let pauseButtonBackgroundChange = () => {
-	return new Promise((resolve, reject) => {
+	testFunc(500).then(() => {
 		if (buttonStop.style.backgroundColor === "blueviolet") {
 			buttonStop.style.backgroundColor = "hotpink"
 		} else {
 			buttonStop.style.backgroundColor = "blueviolet"
 		}
-        if ()
 	})
 }
 
@@ -98,3 +98,25 @@ let pauseButtonBackgroundChange = () => {
 //--------is hotpink, and the computer is just like naaaaaah it's yellow now
 
 //att
+
+// let executorTest = () => {
+// 	let testNum = 1
+// 	return new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			if (testNum === 1) {
+// 				resolve(true)
+// 			} else {
+// 				resolve(false)
+// 			}
+// 		}, 5000)
+// 	})
+// }
+
+// CHEATER MODE, DON'T LOOK UNLESS YOU STUCK
+// let waitForXms = (ms) => {
+// 	return new Promise((resolve) => {
+// 		setTimeout(() => {
+// 			resolve()
+// 		}, ms)
+// 	})
+// }
