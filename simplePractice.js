@@ -10,7 +10,7 @@ let changeBackgroundToRed = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "red"
 		randomColorSelector()
-	}, 1000)
+	}, 250)
 }
 
 let changeBackgroundToBlue = () => {
@@ -20,7 +20,7 @@ let changeBackgroundToBlue = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "blue"
 		randomColorSelector()
-	}, 1000)
+	}, 250)
 }
 
 let changeBackgroundToGreen = () => {
@@ -30,7 +30,7 @@ let changeBackgroundToGreen = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "green"
 		randomColorSelector()
-	}, 1000)
+	}, 250)
 }
 
 //add feature where if randomNum = randomNum after refunctioning, it recursivly does randomnum again
@@ -49,3 +49,13 @@ let randomColorSelector = () => {
 }
 
 randomColorSelector()
+
+let changeBackgroundToBlue = () => {
+	if (previousRandomNum === randomNum) {
+		randomColorSelector()
+	}
+	setTimeout(() => {
+		body[0].style.backgroundColor = "blue"
+		randomColorSelector()
+	}, 250)
+}
