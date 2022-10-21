@@ -1,12 +1,8 @@
 let body = document.getElementsByTagName("body")
 let stylesFromCSS = getComputedStyle(body[0])
 let randomNum = Math.floor(Math.random() * 3)
-let previousRandomNum = randomNum
 
 let changeBackgroundToRed = () => {
-	if (previousRandomNum === randomNum) {
-		randomColorSelector()
-	}
 	setTimeout(() => {
 		body[0].style.backgroundColor = "red"
 		randomColorSelector()
@@ -14,9 +10,6 @@ let changeBackgroundToRed = () => {
 }
 
 let changeBackgroundToBlue = () => {
-	if (previousRandomNum === randomNum) {
-		randomColorSelector()
-	}
 	setTimeout(() => {
 		body[0].style.backgroundColor = "blue"
 		randomColorSelector()
@@ -24,9 +17,6 @@ let changeBackgroundToBlue = () => {
 }
 
 let changeBackgroundToGreen = () => {
-	if (previousRandomNum === randomNum) {
-		randomColorSelector()
-	}
 	setTimeout(() => {
 		body[0].style.backgroundColor = "green"
 		randomColorSelector()
@@ -38,24 +28,11 @@ let randomColorSelector = () => {
 	randomNum = Math.floor(Math.random() * 3)
 	if (randomNum === 0) {
 		changeBackgroundToBlue()
-		previousRandomNum = randomNum
 	} else if (randomNum === 1) {
 		changeBackgroundToRed()
-		previousRandomNum = randomNum
 	} else {
 		changeBackgroundToGreen()
-		previousRandomNum = randomNum
 	}
 }
 
 randomColorSelector()
-
-let changeBackgroundToBlue = () => {
-	if (previousRandomNum === randomNum) {
-		randomColorSelector()
-	}
-	setTimeout(() => {
-		body[0].style.backgroundColor = "blue"
-		randomColorSelector()
-	}, 250)
-}
