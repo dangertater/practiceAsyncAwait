@@ -23,35 +23,31 @@ let changeBackgroundToGreen = () => {
 	}, 2000)
 }
 
-//add feature where if randomNum = randomNum after refunctioning, it recursivly does randomnum again
+//goal of promise is for the promise to resolve if font is yellow, and reject if not
+//----randomColorSelector is used for the background color, but is called frequently so
+//----promise will also be called frequently. first loop through it resolves
+//----.then (line 52) call fontColorHotpink(), next cycle through randomColorSelector it
+//----is hotpink, and the computer is just like naaaaaah it's yellow now
 let randomColorSelector = () => {
-	randomNum = Math.floor(Math.random() * 3)
-	if (randomNum === 0) {
-		changeBackgroundToBlue()
-	} else if (randomNum === 1) {
-		changeBackgroundToRed()
-	} else {
-		changeBackgroundToGreen()
-	}
-}
-
-let fontColorChange = () => {
-	setTimeout(() => {
+	return new Promise((resolve, reject) => {
 		if ((body[0].style.color = "yellow")) {
-			body[0].style.color = "hotpink"
-		} else if ((body[0].style.color = "hotpink")) {
-			body[0].style.color = "yellow"
+			resolve()
+		} else {
+			reject("your font color is not yellow dawg")
 		}
-	}, 500)
+		randomNum = Math.floor(Math.random() * 3)
+		if (randomNum === 0) {
+			changeBackgroundToBlue()
+		} else if (randomNum === 1) {
+			changeBackgroundToRed()
+		} else {
+			changeBackgroundToGreen()
+		}
+	})
 }
-//below is going to be a promise test
-let fontColorCheck = new Promise((resolve, reject) => {
-	if ((body[0].style.color = "hotpink")) {
-		reject("error")
-	} else {
-		resolve()
-	}
-})
 
-randomColorSelector()
-fontColorChange()
+let fontColorHotpink = () => {
+	body[0].style.color = "hotpink"
+}
+
+randomColorSelector().then(fontColorHotpink())
