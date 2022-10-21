@@ -6,21 +6,21 @@ let changeBackgroundToRed = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "red"
 		randomColorSelector()
-	}, 250)
+	}, 2000)
 }
 
 let changeBackgroundToBlue = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "blue"
 		randomColorSelector()
-	}, 250)
+	}, 2000)
 }
 
 let changeBackgroundToGreen = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "green"
 		randomColorSelector()
-	}, 250)
+	}, 2000)
 }
 
 //add feature where if randomNum = randomNum after refunctioning, it recursivly does randomnum again
@@ -35,4 +35,23 @@ let randomColorSelector = () => {
 	}
 }
 
+let fontColorChange = () => {
+	setTimeout(() => {
+		if ((body[0].style.color = "yellow")) {
+			body[0].style.color = "hotpink"
+		} else if ((body[0].style.color = "hotpink")) {
+			body[0].style.color = "yellow"
+		}
+	}, 500)
+}
+//below is going to be a promise test
+let fontColorCheck = new Promise((resolve, reject) => {
+	if ((body[0].style.color = "hotpink")) {
+		reject("error")
+	} else {
+		resolve()
+	}
+})
+
 randomColorSelector()
+fontColorChange()
