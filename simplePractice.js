@@ -42,6 +42,7 @@ let changeBackgroundToGreen = () => {
 		} else {
 			randomColorSelector()
 		}
+		pauseButtonBackgroundChange()
 	}, 750)
 }
 let randomColorSelector = () => {
@@ -65,7 +66,29 @@ let fontColorHotpink = () => {
 }
 
 randomColorSelector()
-//attempt one at a promise below
+
+let executorTest = () => {
+	let testNum = 1
+	setTimeout(() => {
+		if (testNum === 1) {
+			return true
+		} else {
+			return false
+		}
+	}, 5000)
+}
+
+//promise practice, function changes buttonStop's color if background changes to green
+let pauseButtonBackgroundChange = () => {
+	if (buttonStop.style.backgroundColor === "blueviolet") {
+		buttonStop.style.backgroundColor = "hotpink"
+	} else {
+		buttonStop.style.backgroundColor = "blueviolet"
+	}
+	// return new Promise(executorTest(resolve, reject)) {
+	//     if (executor)
+	// }
+}
 
 //below is the goal for promise reject after I failed miserably and deleted all my code
 //----goal of promise is for the promise to resolve if font is yellow, and reject if not
