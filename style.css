@@ -3,3 +3,9 @@
     background-color: rgb(42, 102, 85);
     color: yellow;
 }
+
+#buttonStop {
+    height: 50px;
+    width: 200px;
+    background-color: blueviolet;
+}
