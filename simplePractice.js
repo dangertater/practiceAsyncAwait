@@ -80,14 +80,14 @@ let executorTest = () => {
 
 //promise practice, function changes buttonStop's color if background changes to green
 let pauseButtonBackgroundChange = () => {
-	if (buttonStop.style.backgroundColor === "blueviolet") {
-		buttonStop.style.backgroundColor = "hotpink"
-	} else {
-		buttonStop.style.backgroundColor = "blueviolet"
-	}
-	// return new Promise(executorTest(resolve, reject)) {
-	//     if (executor)
-	// }
+	return new Promise((resolve, reject) => {
+		if (buttonStop.style.backgroundColor === "blueviolet") {
+			buttonStop.style.backgroundColor = "hotpink"
+		} else {
+			buttonStop.style.backgroundColor = "blueviolet"
+		}
+        if ()
+	})
 }
 
 //below is the goal for promise reject after I failed miserably and deleted all my code
