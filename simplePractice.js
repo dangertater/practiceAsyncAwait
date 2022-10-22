@@ -5,9 +5,8 @@ let buttonStop = document.getElementById("buttonStop")
 let backgroundChanging = true
 
 //pause/play button for the background color
-//q4e - the second argument being e I don't actually know whats happening
-//----I just added it because thats what we did before
-buttonStop.addEventListener("click", (e) => {
+buttonStop.addEventListener("click", (info) => {
+	console.log(info)
 	if (backgroundChanging === true) {
 		backgroundChanging = false
 	} else {
@@ -34,6 +33,15 @@ let changeBackgroundToBlue = () => {
 		}
 	}, 750)
 }
+
+let addYouResolvedText = () => {
+	body = body + "<h1>You resolved</h1>"
+}
+
+let addYouRejectedText = () => {
+	body = body + "<h1>You rejected</h1>"
+}
+
 let changeBackgroundToGreen = () => {
 	setTimeout(() => {
 		body[0].style.backgroundColor = "green"
@@ -42,6 +50,10 @@ let changeBackgroundToGreen = () => {
 			randomColorSelector()
 		}
 		pauseButtonBackgroundChange()
+		// .then(addYouWinText)
+		// .catch(
+		// 	"forced error occured change err value in testFuncImportantForPBBC"
+		// )
 	}, 750)
 }
 let randomColorSelector = () => {
@@ -67,27 +79,33 @@ let fontColorHotpink = () => {
 randomColorSelector()
 //
 // write a function that takes ms number, returns a promise, and resolve the promise after ms time.
-let testFunc = (ms) => {
-	return new Promise((resolve) => {
+let testFuncImportantForPBBC = (ms) => {
+	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve()
+			let err = true
+			if (err === false) {
+				resolve()
+			} else {
+				reject("rejected in testFuncImportantForPBBC")
+			}
 		}, ms)
 	})
 }
 
 //promise practice, function changes buttonStop's color if background changes to green
-//----q4e in this scenario, when pauseButtonBackgroundChange is called, we would use 'testFunc' and a promise if the
-//----pauseButtonBackgroundChange's code was only to be ran if it met the 'resolve' properties of testFunc
+//----in this scenario, when pauseButtonBackgroundChange is called, we would use 'testFuncImportantForPBBC' and a promise if the
+//----pauseButtonBackgroundChange's code was only to be ran if it met the 'resolve' properties of testFuncImportantForPBBC
 //--------aka if pauseButtonBackgroundChange is contingent on x, and x takes time to figure out,
-//--------have testFunc test for x, resolve if its good, and then tell pauseButtonBackgroundChange to continue with it's code
+//--------have testFuncImportantForPBBC test for x, resolve if its good, and then tell pauseButtonBackgroundChange to continue with it's code
 let pauseButtonBackgroundChange = () => {
-	testFunc(500).then(() => {
-		if (buttonStop.style.backgroundColor === "blueviolet") {
-			buttonStop.style.backgroundColor = "hotpink"
-		} else {
-			buttonStop.style.backgroundColor = "blueviolet"
-		}
+	testFuncImportantForPBBC(500).catch(() => {
+		console.log("heck")
 	})
+	if (buttonStop.style.backgroundColor === "blueviolet") {
+		buttonStop.style.backgroundColor = "hotpink"
+	} else {
+		buttonStop.style.backgroundColor = "blueviolet"
+	}
 }
 
 //below is the goal for promise reject after I failed miserably and deleted all my code
