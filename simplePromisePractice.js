@@ -17,4 +17,65 @@ let importantFunction = () => {
 	)
 }
 
-addNumbers(3, 2).then(importantFunction)
+// addNumbers(3, 2).then(importantFunction)
+
+//monday morning practice lets gooooooo!
+
+// let charmander = { name: "charmander", abilities: "scratch", type: "fire" }
+// let squirtle = { name: "squirtle", abilites: "watergun", type: "water" }
+// let bulbasaur = { name: "bulbasaur", abilites: "leafMurder", type: "leafyBoi" }
+let charmander = "charmander"
+let bulbasaur = "bulbasaur"
+let squirtle = "squirtle"
+let mewtwo = "mewtwo"
+let completePokeArray = [charmander]
+let yourPokemon = []
+
+let throwPokeball = (pokemon) => {
+	return new Promise((resolve, reject) => {
+		let pokeballRNG = Math.random()
+		if (pokeballRNG < 0.5) {
+			console.log(`${pokemon} escaped le pokeball!`)
+		} else {
+			yourPokemon.push(pokemon),
+				console.log(`you caught ${pokemon}! you have ${yourPokemon} so far!`)
+		}
+		if (yourPokemon.includes("squirtle")) {
+			resolve()
+		} else if (yourPokemon.includes("mewtwo")) {
+			reject()
+		}
+	})
+}
+let pokeMaster = () => {
+	setTimeout(() => {
+		console.log(
+			"you have entrapped all of le creatures, go make them battle eachother for fame you savage."
+		)
+	}, 2000)
+}
+
+let heck = () => {
+	console.log("heck")
+}
+// throwPokeball(charmander).then(pokeMaster)
+console.log("your pokemon master list", yourPokemon)
+throwPokeball(mewtwo).then(pokeMaster).catch(heck)
+
+//q4e why doesn't the below work?
+// let throwPokeball = (pokemon) => {
+// 	return new Promise((resolve, reject) => {
+// 		let pokeballRNG = Math.random()
+// 		if (pokeballRNG < 0.5) {
+// 			console.log(`${pokemon} escaped le pokeball!`)
+// 		} else {
+// 			yourPokemon.push(pokemon),
+// 				console.log(`you caught ${pokemon}! you have ${yourPokemon} so far!`)
+// 		}
+// 		if (yourPokemon == completePokeArray) {
+// 			resolve()
+// 		} else if (yourPokemon.includes("mewtwo")) {
+// 			reject()
+// 		}
+// 	})
+// }
