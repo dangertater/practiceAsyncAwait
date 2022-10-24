@@ -79,9 +79,23 @@ let importantFunction = () => {
 // 		}
 // 	})
 // }
-let sampleObj0 = { name: "zero", age: 0 }
-let sampleObj1 = { name: "one", age: 1 }
-let sampleObj2 = { name: "two", age: 2 }
-let objArray = [sampleObj0, sampleObj1, sampleObj2]
-console.log("without json", objArray)
-console.log("w json", JSON.stringify(objArray))
+// let sampleObj0 = { name: "zero", age: 0 }
+// let sampleObj1 = { name: "one", age: 1 }
+// let sampleObj2 = { name: "two", age: 2 }
+// let objArray = [sampleObj0, sampleObj1, sampleObj2]
+
+// let sampleArray = [0, 1, 2, 3, 4, 5, 6, 7]
+
+// let heck = () => {
+// 	for (element of sampleArray) {
+// 		console.log(`element ${element}`)
+// 	}
+// }
+// heck()
+let main = document.getElementById("main")
+
+let alterMain = () => {
+	main.innerHTML = main.innerHTML + `ADDED THIS LINE MOFO`
+}
+
+alterMain()
